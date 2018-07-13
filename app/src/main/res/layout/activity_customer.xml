@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".customer"
+    >
+  <!--<ScrollView-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--tools:layout_editor_absoluteX="0dp"-->
+      <!--tools:layout_editor_absoluteY="16dp"-->
+      <!--tools:ignore="MissingConstraints"-->
+      <!--&gt;-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dp"
+          android:gravity="center_vertical"
+          android:text="ORDER ID"
+          android:textStyle="bold"
+          />
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="4dp"
+          android:background="@color/colorGrayLight"
+          />
+      <TextView
+          android:id="@+id/cOrderid"
+          android:layout_width="match_parent"
+          android:layout_height="25dp"
+          android:gravity="center_vertical"
+          android:textStyle="bold"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dp"
+          android:gravity="center_vertical"
+          android:text="Restaurant Name"
+          android:textStyle="bold"
+          />
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="4dp"
+          android:background="@color/colorGrayLight"
+          />
+      <TextView
+          android:id="@+id/cRestaurant"
+          android:layout_width="match_parent"
+          android:layout_height="25dp"
+          android:gravity="center_vertical"
+          android:textStyle="bold"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="25dp"
+          android:gravity="center_vertical"
+          android:text="Customer Details"
+          android:textStyle="bold"
+          />
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="4dp"
+          android:background="@color/colorGrayLight"
+          />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME :"
+
+            />
+        <TextView
+            android:id="@+id/cName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADDRESS :"
+
+            />
+        <TextView
+            android:id="@+id/cAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PHONE NO. :"
+
+            />
+        <TextView
+            android:id="@+id/cPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMAIL :"
+            />
+        <TextView
+            android:id="@+id/cMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUMMARY :"
+
+            />
+        <TextView
+            android:id="@+id/cSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+      <RelativeLayout
+          android:id="@+id/updateCustomerText"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:background="@color/cardview_shadow_start_color"
+          android:orientation="horizontal"
+          >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+
+            android:text="Update Customer about the order"
+            />
+        <ImageView
+
+            android:id="@+id/arrow"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/downarrow"
+            />
+      </RelativeLayout>
+      <android.support.v7.widget.CardView
+          android:id="@+id/updateCustomer"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          >
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              >
+
+            <EditText
+                android:id="@+id/timeToGo"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Set time(in min)"
+                />
+            <Button
+                android:id="@+id/sendTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send"
+                />
+          </LinearLayout>
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              >
+            <EditText
+                android:id="@+id/customerMessage"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Leave a message for the customer"
+                android:inputType="textMultiLine"
+                />
+            <Button
+                android:id="@+id/sendMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/customerMessage"
+                android:text="Send"
+                />
+          </RelativeLayout>
+
+
+        </LinearLayout>
+      </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+  <!--</ScrollView>-->
+
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/fab1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:fabSize="auto"
+      android:layout_margin="@dimen/fab_margin"
+      android:src="@drawable/call"
+      app:fabCustomSize="50dp"
+      />
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/fab2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:fabSize="auto"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_margin="@dimen/fab_margin"
+      android:src="@drawable/flag"
+      app:fabCustomSize="50dp"
+      />
+
+</android.support.constraint.ConstraintLayout>
