@@ -2,6 +2,7 @@ package vanshika.android.com.deliveryboy;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -31,11 +32,12 @@ public class ChildEventListener extends Service {
             if (newOrder != null) {
               Notification notification=new Notification.Builder(getApplicationContext())
                   .setContentTitle("New Order")
-                  .setContentText("Restaurant pick up at"+newOrder.getRestaurant())
+                  .setContentText("Restaurant pick up at "+newOrder.getRestaurant())
                   .setSmallIcon(R.drawable.ic_launcher_background)
                   .setPriority(Notification.PRIORITY_HIGH)
                   .setAutoCancel(true)
                   .build();
+              notification.contentIntent= PendingIntent.getActivity(getApplicationContext(),0,new Intent(getApplicationContext(),MainActivity.class),PendingIntent.FLAG_UPDATE_CURRENT);
               notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_SHOW_LIGHTS;
               NotificationManager notificationManager = (NotificationManager)
                   getApplicationContext().getSystemService(NOTIFICATION_SERVICE);

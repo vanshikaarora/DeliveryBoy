@@ -2,6 +2,7 @@ package vanshika.android.com.deliveryboy;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -135,12 +136,12 @@ public class MainActivity extends AppCompatActivity
               listViewHolder holder=new listViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.card_view,null,false));
               holder.button.setText("Order confirmed by Restaurant");
 
-            }else
+            }/*else
             {
               listViewHolder holder=new listViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.card_view,null,false));
               holder.button.setText("Order confirmed by Food Haunt");
 
-            }
+            }*/
           }
         }//spinner.setVisibility(View.GONE);
         ((TextView) llProgress.findViewById(R.id.tvMessage)).setText("");
@@ -165,6 +166,7 @@ public class MainActivity extends AppCompatActivity
                   .setPriority(Notification.PRIORITY_HIGH)
                   .setAutoCancel(true)
                   .build();
+              notification.contentIntent= PendingIntent.getActivity(getApplicationContext(),0,new Intent(getApplicationContext(),MainActivity.class),PendingIntent.FLAG_UPDATE_CURRENT);
               notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_SHOW_LIGHTS;
               NotificationManager notificationManager = (NotificationManager)
                   getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
@@ -218,22 +220,22 @@ public class MainActivity extends AppCompatActivity
             DatabaseReference dRef=ref.child("orders");
             if (holder.button.getText().toString().equals("Order Confirmed by Food Haunt")){
               holder.button.setText("Order confirmed by Restaurant");
-              dRef.child("1").child("foodHauntConfirmation").setValue("successful");
+              dRef.child("AKF201807134516").child("foodHauntConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
               holder.button.setText("Picked up");
-              dRef.child("1").child("restaurantConfirmation").setValue("successful");
+              dRef.child("AKF201807134516").child("restaurantConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Picked up")){
               holder.button.setText("Delivered");
-              dRef.child("1").child("pickup").setValue("successful");
+              dRef.child("AKF201807134516").child("pickup").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Delivered")){
-              dRef.child("1").child("delivery").setValue("successful");
+              dRef.child("AKF201807134516").child("delivery").setValue("successful");
               Toast.makeText(MainActivity.this,"Successfully delivered",Toast.LENGTH_SHORT).show();
               //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
               holder.cardViewObject.removeView(view);
-              dRef.child("1").removeValue();
+              dRef.child("AKF201807134516").removeValue();
             }
           }
         });
