@@ -44,7 +44,7 @@ public class OrderDetails {
         this.orderId = orderId;
     }
 
-    public OrderDetails(String name, String email, String mobile, String address,
+    public OrderDetails(String orderId,String name, String email, String mobile, String address,
                         String restaurant, String summary) {
         this.name = name;
         this.email = email;
@@ -52,7 +52,7 @@ public class OrderDetails {
         this.address = address;
         this.restaurant = restaurant;
         this.summary = summary;
-        this.token = token;
+        //this.token = token;
         this.orderId = orderId;
     }
 

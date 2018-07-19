@@ -118,11 +118,11 @@ public class MainActivity extends AppCompatActivity
               orderId=singleSnapshot.getKey();
               adapter.notifyDataSetChanged();
             }
-            if (singleSnapshot.hasChild("Delivered")){
-              listViewHolder holder=new listViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.card_view,null,false));
-              holder.button.setText("Delivered");
-
-            }else
+            //if (singleSnapshot.hasChild("Delivered")){
+            //  listViewHolder holder=new listViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.card_view,null,false));
+            //  holder.button.setText("Delivered");
+            //
+            //}else
             if (singleSnapshot.hasChild("Picked up")){
               listViewHolder holder=new listViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.card_view,null,false));
               holder.button.setText("Delivered");
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity
       @Override
       protected void onBindViewHolder(@NonNull final listViewHolder holder, int position,
           @NonNull final OrderDetails model) {
-        holder.tId.setText(setId);
+        holder.tId.setText(model.getOrderId());
         holder.tName.setText(model.getName());
         holder.tEmail.setText(model.getEmail());
         holder.tMobile.setText(model.getMobile());
@@ -222,48 +222,52 @@ public class MainActivity extends AppCompatActivity
             if (holder.button.getText().toString().equals("Order Confirmed by Food Haunt")){
               holder.button.setText("Order confirmed by Restaurant");
 //<<<<<<< HEAD
-              dRef.child("AKF201807134516").child("foodHauntConfirmation").setValue("successful");
+              dRef.child(model.getOrderId()).child("foodHauntConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
               holder.button.setText("Picked up");
-              dRef.child("AKF201807134516").child("restaurantConfirmation").setValue("successful");
+              dRef.child(model.getOrderId()).child("restaurantConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Picked up")){
               holder.button.setText("Delivered");
-              dRef.child("AKF201807134516").child("pickup").setValue("successful");
+              dRef.child(model.getOrderId()).child("pickup").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Delivered")){
-              dRef.child("AKF201807134516").child("delivery").setValue("successful");
+              dRef.child(model.getOrderId()).child("delivery").setValue("successful");
               Toast.makeText(MainActivity.this,"Successfully delivered",Toast.LENGTH_SHORT).show();
               //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
+              //holder.button.setText("Order Confirmed by Food Haunt");
               holder.cardViewObject.removeView(view);
-              dRef.child("AKF201807134516").removeValue();
+              dRef.child(model.getOrderId()).child("foodHauntConfirmation").setValue("successful");
+
+              dRef.child(model.getOrderId()).removeValue();
+              adapter.notifyDataSetChanged();
 //=======
-              dRef.child(orderId).child("foodHauntConfirmation").setValue("successful");
+
             }
-            else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
-              holder.button.setText("Picked up");
-              dRef.child(orderId).child("restaurantConfirmation").setValue("successful");
-            }
-            else if (holder.button.getText().toString().equals("Picked up")){
-              holder.button.setText("Delivered");
-              dRef.child(orderId).child("pickup").setValue("successful");
-            }
-            else if (holder.button.getText().toString().equals("Delivered")){
-              dRef.child(orderId).child("delivery").setValue("successful");
-              Toast.makeText(MainActivity.this,"Successfully delivered",Toast.LENGTH_SHORT).show();
-              //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
-              holder.cardViewObject.removeView(view);
-              dRef.child(orderId).removeValue();
-//>>>>>>> ac8305ce99b3f1c70b70ea02bb23e9faddeac71c
-            }
+//            else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
+//              holder.button.setText("Picked up");
+//              dRef.child(orderId).child("restaurantConfirmation").setValue("successful");
+//            }
+//            else if (holder.button.getText().toString().equals("Picked up")){
+//              holder.button.setText("Delivered");
+//              dRef.child(orderId).child("pickup").setValue("successful");
+//            }
+//            else if (holder.button.getText().toString().equals("Delivered")){
+//              dRef.child(orderId).child("delivery").setValue("successful");
+//              Toast.makeText(MainActivity.this,"Successfully delivered",Toast.LENGTH_SHORT).show();
+//              //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
+//              holder.cardViewObject.removeView(view);
+//              dRef.child(orderId).removeValue();
+////>>>>>>> ac8305ce99b3f1c70b70ea02bb23e9faddeac71c
+//            }
           }
         });
 
         holder.cardViewObject.setOnClickListener(new View.OnClickListener() {
           @Override public void onClick(View view) {
             Intent intent=new Intent(MainActivity.this,customer.class);
-            intent.putExtra("orderid",holder.tId.getText());
+            intent.putExtra("orderid",model.getOrderId());
             intent.putExtra("name",model.getName());
             intent.putExtra("mobile",model.getMobile());
             intent.putExtra("address",model.getAddress());
