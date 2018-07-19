@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
         childCount= (int) dataSnapshot.getChildrenCount();
         for (DataSnapshot singleSnapshot:dataSnapshot.getChildren()){
           if (singleSnapshot!=null){
-            OrderDetails newOrder = singleSnapshot.getValue(OrderDetails.class);//singleSshot he or neeche isi line pe datasnapshot use ki ho
+            OrderDetails newOrder =  singleSnapshot.getValue(OrderDetails.class);//singleSshot he or neeche isi line pe datasnapshot use ki ho
             if (newOrder!=null){// sir maine code run kiya hua h aur adapter main screen par bhi data aa rha h and notification bhi
               newOrder.setOrderId(singleSnapshot.getKey());
               setId=singleSnapshot.getKey();
@@ -221,6 +221,7 @@ public class MainActivity extends AppCompatActivity
             DatabaseReference dRef=ref.child("orders");
             if (holder.button.getText().toString().equals("Order Confirmed by Food Haunt")){
               holder.button.setText("Order confirmed by Restaurant");
+//<<<<<<< HEAD
               dRef.child("AKF201807134516").child("foodHauntConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
@@ -237,6 +238,24 @@ public class MainActivity extends AppCompatActivity
               //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
               holder.cardViewObject.removeView(view);
               dRef.child("AKF201807134516").removeValue();
+//=======
+              dRef.child(orderId).child("foodHauntConfirmation").setValue("successful");
+            }
+            else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
+              holder.button.setText("Picked up");
+              dRef.child(orderId).child("restaurantConfirmation").setValue("successful");
+            }
+            else if (holder.button.getText().toString().equals("Picked up")){
+              holder.button.setText("Delivered");
+              dRef.child(orderId).child("pickup").setValue("successful");
+            }
+            else if (holder.button.getText().toString().equals("Delivered")){
+              dRef.child(orderId).child("delivery").setValue("successful");
+              Toast.makeText(MainActivity.this,"Successfully delivered",Toast.LENGTH_SHORT).show();
+              //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
+              holder.cardViewObject.removeView(view);
+              dRef.child(orderId).removeValue();
+//>>>>>>> ac8305ce99b3f1c70b70ea02bb23e9faddeac71c
             }
           }
         });

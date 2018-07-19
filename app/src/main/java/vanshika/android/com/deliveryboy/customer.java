@@ -146,11 +146,11 @@ public class customer extends AppCompatActivity implements View.OnClickListener 
     DatabaseReference ref=database.getReference();//TODO:change child from to orderId
     DatabaseReference dRef=ref.child("orders");
     switch (id){
-      case R.id.sendTime:dRef.child("6").child("time").setValue(setTime.getText().toString());
+      case R.id.sendTime:dRef.child(orderId).child("time").setValue(setTime.getText().toString());
       setTime.setText(setTime.getText().toString());
       setTime.setEnabled(false);
         break;
-      case R.id.sendMsg:dRef.child("6").child("message").setValue(msgText.getText().toString());
+      case R.id.sendMsg:dRef.child(orderId).child("message").setValue(msgText.getText().toString());
       msgText.setText(msgText.getText().toString());
       setTime.setEnabled(false);
         break;
