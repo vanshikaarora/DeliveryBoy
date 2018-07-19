@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
   FirebaseRecyclerAdapter adapter;
   private ProgressBar spinner;
   FirebaseRecyclerOptions <OrderDetails> list;
-  int childCount;
+  int childCount; String setId;
   private LinearLayout llProgress;
 
 
@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity
             OrderDetails newOrder = singleSnapshot.getValue(OrderDetails.class);//singleSshot he or neeche isi line pe datasnapshot use ki ho
             if (newOrder!=null){// sir maine code run kiya hua h aur adapter main screen par bhi data aa rha h and notification bhi
               newOrder.setOrderId(singleSnapshot.getKey());
+              setId=singleSnapshot.getKey();
               orderId=singleSnapshot.getKey();
               adapter.notifyDataSetChanged();
             }
@@ -206,7 +207,7 @@ public class MainActivity extends AppCompatActivity
       @Override
       protected void onBindViewHolder(@NonNull final listViewHolder holder, int position,
           @NonNull final OrderDetails model) {
-        holder.tId.setText(model.getOrderId());
+        holder.tId.setText(setId);
         holder.tName.setText(model.getName());
         holder.tEmail.setText(model.getEmail());
         holder.tMobile.setText(model.getMobile());
@@ -243,7 +244,7 @@ public class MainActivity extends AppCompatActivity
         holder.cardViewObject.setOnClickListener(new View.OnClickListener() {
           @Override public void onClick(View view) {
             Intent intent=new Intent(MainActivity.this,customer.class);
-            intent.putExtra("orderid",model.getOrderId());
+            intent.putExtra("orderid",holder.tId.getText());
             intent.putExtra("name",model.getName());
             intent.putExtra("mobile",model.getMobile());
             intent.putExtra("address",model.getAddress());
