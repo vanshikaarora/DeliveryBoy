@@ -91,21 +91,19 @@ public class customer extends AppCompatActivity implements View.OnClickListener 
     tSummary.setText(summary);
 
     FloatingActionButton fab1 = findViewById(R.id.fab1);
-    FloatingActionButton fab2 = findViewById(R.id.fab2);
+    //FloatingActionButton fab2 = findViewById(R.id.fab2);
     fab1.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
         call();
       }
     });
-    fab2.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
-        navigate();
-      }
-    });
+    //fab2.setOnClickListener(new View.OnClickListener() {
+    //  @Override public void onClick(View view) {
+    //    navigate();
+    //  }
+    //});
   }
 
-  private void navigate() {
-  }
 
   private void call() {
     Intent callIntent = new Intent(Intent.ACTION_CALL);

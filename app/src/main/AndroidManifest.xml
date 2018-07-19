@@ -16,7 +16,8 @@
         <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
       <!--</intent-filter>-->
     <!--</service>-->
-    <service android:name="ChildEventListener"/>
+    <service android:name="ChildEventListener"
+        android:enabled="true"/>
     <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
