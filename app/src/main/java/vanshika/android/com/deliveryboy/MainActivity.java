@@ -13,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -111,13 +112,17 @@ public class MainActivity extends AppCompatActivity
         childCount= (int) dataSnapshot.getChildrenCount();
         for (DataSnapshot singleSnapshot:dataSnapshot.getChildren()){
           if (singleSnapshot!=null){
-            OrderDetails newOrder =  singleSnapshot.getValue(OrderDetails.class);//singleSshot he or neeche isi line pe datasnapshot use ki ho
-            if (newOrder!=null){// sir maine code run kiya hua h aur adapter main screen par bhi data aa rha h and notification bhi
-              newOrder.setOrderId(singleSnapshot.getKey());
-              setId=singleSnapshot.getKey();
-              orderId=singleSnapshot.getKey();
-              adapter.notifyDataSetChanged();
+            Log.v("mainactivity",singleSnapshot.getValue().toString());
+            if (singleSnapshot.getChildrenCount()>=7){
+              OrderDetails newOrder =  singleSnapshot.getValue(OrderDetails.class);//singleSshot he or neeche isi line pe datasnapshot use ki ho
+              if (newOrder!=null){// sir maine code run kiya hua h aur adapter main screen par bhi data aa rha h and notification bhi
+                newOrder.setOrderid(singleSnapshot.getKey());
+                setId=singleSnapshot.getKey();
+                orderId=singleSnapshot.getKey();
+                adapter.notifyDataSetChanged();
+              }
             }
+
             //if (singleSnapshot.hasChild("Delivered")){
             //  listViewHolder holder=new listViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.card_view,null,false));
             //  holder.button.setText("Delivered");
@@ -207,7 +212,7 @@ public class MainActivity extends AppCompatActivity
       @Override
       protected void onBindViewHolder(@NonNull final listViewHolder holder, int position,
           @NonNull final OrderDetails model) {
-        holder.tId.setText(model.getOrderId());
+        holder.tId.setText(model.getOrderid());
         holder.tName.setText(model.getName());
         holder.tEmail.setText(model.getEmail());
         holder.tMobile.setText(model.getMobile());
@@ -222,25 +227,25 @@ public class MainActivity extends AppCompatActivity
             if (holder.button.getText().toString().equals("Order Confirmed by Food Haunt")){
               holder.button.setText("Order confirmed by Restaurant");
 //<<<<<<< HEAD
-              dRef.child(model.getOrderId()).child("foodHauntConfirmation").setValue("successful");
+              dRef.child(model.getOrderid()).child("foodHauntConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Order confirmed by Restaurant")){
               holder.button.setText("Picked up");
-              dRef.child(model.getOrderId()).child("restaurantConfirmation").setValue("successful");
+              dRef.child(model.getOrderid()).child("restaurantConfirmation").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Picked up")){
               holder.button.setText("Delivered");
-              dRef.child(model.getOrderId()).child("pickup").setValue("successful");
+              dRef.child(model.getOrderid()).child("pickup").setValue("successful");
             }
             else if (holder.button.getText().toString().equals("Delivered")){
-              dRef.child(model.getOrderId()).child("delivery").setValue("successful");
+              dRef.child(model.getOrderid()).child("delivery").setValue("successful");
               Toast.makeText(MainActivity.this,"Successfully delivered",Toast.LENGTH_SHORT).show();
               //ToDO:remove the cardView and delete from firebase and change child value from 4 to orderId
               //holder.button.setText("Order Confirmed by Food Haunt");
               holder.cardViewObject.removeView(view);
-              dRef.child(model.getOrderId()).child("foodHauntConfirmation").setValue("successful");
+              //dRef.child(model.getOrderId()).child("foodHauntConfirmation").setValue("successful");
 
-              dRef.child(model.getOrderId()).removeValue();
+              dRef.child(model.getOrderid()).removeValue();
               adapter.notifyDataSetChanged();
 //=======
 
@@ -265,9 +270,10 @@ public class MainActivity extends AppCompatActivity
         });
 
         holder.cardViewObject.setOnClickListener(new View.OnClickListener() {
+
           @Override public void onClick(View view) {
             Intent intent=new Intent(MainActivity.this,customer.class);
-            intent.putExtra("orderid",model.getOrderId());
+            intent.putExtra("orderid",model.getOrderid());
             intent.putExtra("name",model.getName());
             intent.putExtra("mobile",model.getMobile());
             intent.putExtra("address",model.getAddress());

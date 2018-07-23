@@ -6,7 +6,9 @@ public class OrderDetails {
     private String mobile;
     private String address;
     private String restaurant;
-    private String summary;
+    private String summary,token;
+
+
 
     public String getToken() {
         return token;
@@ -16,45 +18,47 @@ public class OrderDetails {
         this.token = token;
     }
 
-    private String token;
+    //private String token;
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrderid() {
+        return orderid;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrderid(String orderId) {
+        this.orderid = orderId;
     }
 
-    String orderId;
+    String orderid;
 
     public OrderDetails() {
         //emty constructor required for firebase
     }
 
-    public OrderDetails(String name, String email, String mobile, String address,
-                        String restaurant, String summary, String token, String orderId) {
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-        this.address = address;
-        this.restaurant = restaurant;
-        this.summary = summary;
-        this.token = token;
-        this.orderId = orderId;
-    }
+    //public OrderDetails(String name, String email, String mobile, String address,
+    //    String restaurant, String summary, String orderId) {
+    //    //this.token = token;
+    //    this.name = name;
+    //    this.email = email;
+    //    this.mobile = mobile;
+    //    this.address = address;
+    //    this.restaurant = restaurant;
+    //    this.summary = summary;
+    //    //this.orderKey = orderKey;
+    //
+    //    this.orderId = orderId;
+    //}
 
-    public OrderDetails(String orderId,String name, String email, String mobile, String address,
-                        String restaurant, String summary) {
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-        this.address = address;
-        this.restaurant = restaurant;
-        this.summary = summary;
-        //this.token = token;
-        this.orderId = orderId;
-    }
+    public OrderDetails(String name, String email, String mobile, String address,
+      String restaurant, String summary, String token, String orderid) {
+            this.name = name;
+            this.email = email;
+            this.mobile = mobile;
+            this.address = address;
+            this.restaurant = restaurant;
+            this.summary = summary;
+            this.token = token;
+            this.orderid = orderid;
+          }
 
     //public OrderDetails(String name, String email, String mobile, String address,
     //    String restaurant, String summary) {
