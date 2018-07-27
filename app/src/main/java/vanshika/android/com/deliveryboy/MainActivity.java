@@ -73,15 +73,15 @@ public class MainActivity extends AppCompatActivity
     llProgress = (LinearLayout) findViewById(R.id.llProgress);
     showProgress("Loading...");
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
-      }
-
-    });
+    //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    //fab.setOnClickListener(new View.OnClickListener() {
+    //  @Override
+    //  public void onClick(View view) {
+    //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+    //        .setAction("Action", null).show();
+    //  }
+    //
+    //});
 
     startService(new Intent(getBaseContext(), vanshika.android.com.deliveryboy.ChildEventListener.class));
 

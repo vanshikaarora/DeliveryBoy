@@ -208,7 +208,7 @@
 
             <EditText
                 android:id="@+id/timeToGo"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:hint="Set time(in min)"
@@ -227,7 +227,7 @@
               >
             <EditText
                 android:id="@+id/customerMessage"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:hint="Leave a message for the customer"
                 android:inputType="textMultiLine"
@@ -248,17 +248,24 @@
 
   <!--</ScrollView>-->
 
-  <android.support.design.widget.FloatingActionButton
-      android:id="@+id/fab1"
-      android:layout_width="wrap_content"
+  <!--<android.support.design.widget.FloatingActionButton-->
+      <!--android:id="@+id/fab1"-->
+      <!--android:layout_width="wrap_content"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:layout_gravity="bottom|end"-->
+      <!--app:layout_constraintBottom_toBottomOf="parent"-->
+      <!--app:fabSize="auto"-->
+      <!--app:layout_constraintEnd_toEndOf="parent"-->
+      <!--android:layout_margin="@dimen/fab_margin"-->
+      <!--android:src="@drawable/call"-->
+      <!--app:fabCustomSize="50dp"-->
+      <!--/>-->
+  <Button
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_gravity="bottom|end"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:fabSize="auto"
-      app:layout_constraintEnd_toEndOf="parent"
-      android:layout_margin="@dimen/fab_margin"
-      android:src="@drawable/call"
-      app:fabCustomSize="50dp"
+      android:drawableLeft="@drawable/call"
+      android:text="Call the customer"
       />
   <!--<android.support.design.widget.FloatingActionButton-->
       <!--android:id="@+id/fab2"-->
