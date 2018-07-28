@@ -90,7 +90,7 @@ public class customer extends AppCompatActivity implements View.OnClickListener 
     tRestaurant.setText(restaurant);
     tSummary.setText(summary);
 
-    FloatingActionButton fab1 = findViewById(R.id.fab1);
+    Button fab1 = findViewById(R.id.fab1);
     //FloatingActionButton fab2 = findViewById(R.id.fab2);
     fab1.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
