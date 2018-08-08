@@ -45,10 +45,9 @@ public class ChildEventListener extends Service {
               notificationManager.notify(1, notification);
               //FirebaseMessaging.getInstance().subscribeToTopic("test");
               //adapter.notifyDataSetChanged();
-            }//lag to sahi raha heok sir wese abhi deliveryapp tak dat pahunchna and notification show karna complete h kal se i'll start updating client app
-            //Sahi he, ok sir. notification a RHI HE? sir wohi check nahi kar paa rahi thi mein 12 baje se abhi karti hun
-          }// yeh error pehle bhi aayi th
-        }//aapt2 kab use karliya?sir pehle koi error aayi thi aapt2 ki toh mainie gradle meini add kiya tha kuch
+            }
+          }
+        }
       }
 
       @Override public void onCancelled(@NonNull DatabaseError databaseError) {
