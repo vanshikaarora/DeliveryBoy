@@ -7,7 +7,7 @@ Using Firebase
 # Preview
 This is a simple deliveryBoy app wherein we fetch data of order placed by FoodHaunt App. Then display all such orders in a recycler view along with the order details in the app. The format for each order is described as below.
 
-![alt text](https://github.com/vanshikaarora/DeliveryBoy/blob/master/app/src/main/res/drawable-v21/readme_a.png)
+<img src="https://github.com/vanshikaarora/DeliveryBoy/blob/master/app/src/main/res/drawable-v21/readme_a.png", height="560px" />
 
 By tapping on the **"Order confirmed by Food Haunt"** we update our data on firebase for FoodHaunt confirmation successful thus update user's timelineView. Successfully by tapping the button **"Order confirmed by FoodHaunt"** the value is changed from **"Order confirmed By Food Haunt"** -> **"Order confirmed by restaurant"** -> **"Picked up"** -> **"Delivered"**. simultaneously updating corresponding parameters on Firebase and thus updating FoodHaunt users TimeLineView.
 
