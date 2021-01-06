@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     final FirebaseDatabase database=FirebaseDatabase.getInstance();
-    DatabaseReference ref=database.getReference();//HAve you made this reference already in the database?
+    DatabaseReference ref=database.getReference();
     DatabaseReference dRef=ref.child("orders");
 
 
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity{
           if (singleSnapshot!=null){
             Log.v("mainactivity",singleSnapshot.getValue().toString());
             if (singleSnapshot.getChildrenCount()>=7){
-              OrderDetails newOrder =  singleSnapshot.getValue(OrderDetails.class);//singleSshot he or neeche isi line pe datasnapshot use ki ho
-              if (newOrder!=null){// sir maine code run kiya hua h aur adapter main screen par bhi data aa rha h and notification bhi
+              OrderDetails newOrder =  singleSnapshot.getValue(OrderDetails.class);
+              if (newOrder!=null){
                 newOrder.setOrderid(singleSnapshot.getKey());
                 setId=singleSnapshot.getKey();
                 orderId=singleSnapshot.getKey();
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity{
               notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_SHOW_LIGHTS;
               NotificationManager notificationManager = (NotificationManager)
                   getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-              notificationManager.notify(1, notification);//yaha pe kar kya rhi hoptani sir yeh stack se copy kiya tha shayad
+              notificationManager.notify(1, notification);
               //FirebaseMessaging.getInstance().subscribeToTopic("test");
               adapter.notifyDataSetChanged();
             }
