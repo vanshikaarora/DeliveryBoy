@@ -40,5 +40,4 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     manager.notify(0,builder.build());
   }
 
-}//sir wese iss class ka koi use nahi kiya h maine abhi pehle app se doubt
-//regarding this hi puch rahi thi fir maine ChidEvttListener add kar diya as a service. Cool
+}
