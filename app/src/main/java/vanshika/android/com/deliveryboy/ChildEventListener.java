@@ -20,7 +20,7 @@ import vanshika.android.com.deliveryboy.R;
 public class ChildEventListener extends Service {
   @Nullable @Override public IBinder onBind(Intent intent) {
     return null;
-  }//yeh waala //deskh ra hu ruko to
+  }
 
   @Override public int onStartCommand(Intent intent, int flags, int startId) {
     final FirebaseDatabase database=FirebaseDatabase.getInstance();
